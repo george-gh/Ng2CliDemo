@@ -1,0 +1,24 @@
+.menu-list {
+    background-color: cadetblue;
+    padding: 5px;   
+}
+.menu-link-item {
+    margin-left: 5px;
+    display: inline;
+    padding: 5px;
+}
+.router-link-active {
+    padding: 4px;
+    border: 1px solid black;
+    background-color: aquamarine;
+}
+.main-section {
+    background-color: lightgray;
+    padding: 20px;
+    margin: 10px;
+}
+.router-section {
+    background-color: mediumpurple;
+    padding: 10px;
+    margin: 10px;
+}

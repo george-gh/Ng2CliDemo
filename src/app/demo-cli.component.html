@@ -1,0 +1,17 @@
+<nav>
+  <ul class="menu-list">
+    <li class="menu-link-item"><a [routerLink]="['/first']">Text Magic</a></li>
+    <li class="menu-link-item"><a [routerLink]="['/second']">Hidden Directive</a></li>
+    <li class="menu-link-item"><a [routerLink]="['/third']">SubRouting</a></li>
+  </ul>
+</nav>
+<h1>
+  Let's do something on Angular 2
+</h1>
+<section class="main-section">
+  <p>Welcome to this basic Angular 2 application</p>
+  <h3>Browse the sections in the upper menu</h3>
+</section>
+<section class="router-section" *ngIf="!isEmptyHome()">
+  <router-outlet></router-outlet>
+</section>
