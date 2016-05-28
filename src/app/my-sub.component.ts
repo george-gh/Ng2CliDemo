@@ -10,7 +10,7 @@ import {Item} from './shared/item.model';
     styleUrls: ['my-sub.component.css'],
     template: `
         <div>
-            <h4>I am the sub component</h4>
+            <h3>Add a new user</h3>
             <form (ngSubmit)="onSubmit()" [ngFormModel]="myForm">
                 <div class="form-element">
 				    <label for="name">Name:</label>
@@ -26,7 +26,7 @@ import {Item} from './shared/item.model';
                 </div>
                 <button type="submit">Submit</button>
 			</form>
-            <item-list [myList]="getList()" (deletedItem)="onDelete(event)"></item-list>
+            <item-list [myList]="getList()" (deletedItem)="onDelete($event)"></item-list>
         </div>
     `,
     directives: [FORM_DIRECTIVES, ItemListComponent],
@@ -47,7 +47,6 @@ export class MySubComponent implements OnInit {
     }
     
     onSubmit() {
-        console.log('Form submitted!', this.myForm.value);
         this.itemServ.addItem(this.myForm.value);
         this.emptyForm();
     }

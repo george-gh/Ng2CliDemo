@@ -5,7 +5,7 @@ import {ColoredDirective} from './shared/colored.directive';
 	selector: 'my-second',
 	template: `
 		<div>
-			<p>And now the second component</p>
+			<h2>Some more tricks, using directives</h2>
 			<label>Color (Retrieve the Game Behind):</label>
 			<input type="text" [(ngModel)]="myColor">
 		</div>
@@ -14,13 +14,14 @@ import {ColoredDirective} from './shared/colored.directive';
 			<p colored [wha]="myColor" >I want a cursor here,<br> what color have you chosen?</p>
 		</div>
 		<div *ngIf="hasColor(myColor)">
-			<p [ngStyle]="{color: myColor}">YOU DISCOVERED AN HIDDEN TEXT</p>
+			<p [ngStyle]="{color: myColor}">{{myText}}</p>
 		</div>
 	`,
 	directives: [ColoredDirective]
 })
 export class MySecondComponent {
 	myColor: string = "";
+	myText: string = "HEY! YOU HAVE DISCOVERED THE HIDDEN TEXT! YOU WON NOTHING, SORRY";
 	
 	hasColor(val: string): boolean {
 		if (!val)
