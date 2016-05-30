@@ -10,18 +10,24 @@ import {Item} from './shared/item.model';
     styleUrls: ['my-sub.component.css'],
     template: `
         <div>
-            <h3>Add a new user</h3>
+            <h4>Add a new user</h4>
             <form (ngSubmit)="onSubmit()" [ngFormModel]="myForm">
                 <div class="form-element">
-				    <label for="name">Name:</label>
+				    <div class="label-container">
+                        <label for="name">Name:</label>
+                    </div>
                     <input type="text" id="name" [ngFormControl]="myForm.controls['name']" #name="ngForm">
                 </div>
                 <div class="form-element">
-                    <label for="surname">Surname:</label>
+                    <div class="label-container">
+                        <label for="surname">Surname:</label>
+                    </div>
                     <input type="text" id="surname" [ngFormControl]="myForm.controls['surname']" #surname="ngForm">
                 </div>
                 <div class="form-element">
-                    <label for="email">Email:</label>
+                    <div class="label-container">
+                        <label for="email">Email:</label>
+                    </div>
                     <input type="text" id="email" [ngFormControl]="myForm.controls['email']" #email="ngForm">
                 </div>
                 <button type="submit">Submit</button>

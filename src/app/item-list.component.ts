@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import {Item} from './shared/item.model';
+import {ItemDetailComponent} from './item-detail.component';
 
 @Component({
     moduleId: module.id,
@@ -9,17 +10,24 @@ import {Item} from './shared/item.model';
             <h3>List of items</h3>
             <ul>
                 <li *ngFor="let item of myList">
-                    {{item.name}} <span class="deleter"><button (click)="onDelete(item)">Delete</button></span>
+                    <span class="deleter">
+                        <a (click)="onSelectItem(item)">{{item.name}}</a>
+                    </span>
+                    <button class="deleteBtn" (click)="onDelete(item)">Delete</button>
                 </li>
             </ul>
         </div>
+        <button *ngIf="selectedItem" (click)="removeItem()">Close details</button>
+        <item-detail [selectedItem]="selectedItem" *ngIf="selectedItem"></item-detail>
     `,
-    styles: ['{deleter: cursor = pointer;}'],
+    styleUrls: ['item-list.component.css'],
     inputs: ['myList'],
-    outputs: ['deletedItem']
+    outputs: ['deletedItem', 'selectedItem'],
+    directives: [ItemDetailComponent]
 })
 export class ItemListComponent implements OnInit {
     deletedItem: EventEmitter<Item> = new EventEmitter<Item>();
+    selectedItem: Item | Object;
     
     constructor() { }
 
@@ -27,6 +35,16 @@ export class ItemListComponent implements OnInit {
     
     onDelete(item: Item) {
         this.deletedItem.emit(item);
+        if (this.selectedItem == item)
+            this.selectedItem = null;
+    }
+    
+    onSelectItem(item: Item): void {
+        this.selectedItem = item;      
+    }
+    
+    removeItem() {
+        this.selectedItem = null;
     }
 
 }

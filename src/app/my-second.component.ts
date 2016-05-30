@@ -14,7 +14,9 @@ import {ColoredDirective} from './shared/colored.directive';
 			<p colored [wha]="myColor" >I want a cursor here,<br> what color have you chosen?</p>
 		</div>
 		<div *ngIf="hasColor(myColor)">
+			<hr>
 			<p [ngStyle]="{color: myColor}">{{myText}}</p>
+			<hr>
 		</div>
 	`,
 	directives: [ColoredDirective]
